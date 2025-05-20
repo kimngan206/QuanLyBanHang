@@ -1,0 +1,6 @@
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\bin\Debug\Polycafe_DTO.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\bin\Debug\Polycafe_DTO.pdb
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\obj\Debug\Polycafe_DTO.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\obj\Debug\Polycafe_DTO.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\obj\Debug\Polycafe_DTO.dll
+C:\Users\ADMIN\OneDrive\Tài liệu\Dự Án Mẫu_SOF2052\ASM_Project\Polycafe_DTO\obj\Debug\Polycafe_DTO.pdb
