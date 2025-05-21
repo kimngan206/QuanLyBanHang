@@ -131,7 +131,6 @@ namespace Polycafe_GUI
                     Properties.Settings.Default.Save();
                 }
 
-                // Phần code đăng nhập tiếp theo...
             }
             else
             {

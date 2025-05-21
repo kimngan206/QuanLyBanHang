@@ -61,7 +61,7 @@ namespace Polycafe_GUI
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(186, 548);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(186, 693);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // button1
@@ -192,7 +192,7 @@ namespace Polycafe_GUI
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(186, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 548);
+            this.panel1.Size = new System.Drawing.Size(941, 693);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -200,7 +200,7 @@ namespace Polycafe_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 548);
+            this.ClientSize = new System.Drawing.Size(1127, 693);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "MainForm";
