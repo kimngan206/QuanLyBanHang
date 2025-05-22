@@ -362,5 +362,176 @@ namespace Polycafe_DAL
             }
         }
     }
+    public class ThongkeNVDAL
+    {
+        private static string connectionString = "Data Source=SD20302\\ADMINCUTE;Initial Catalog=PolyCafe;Integrated Security=True;";
+        public DataTable GetNV()
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT MaNhanVien, HoTen FROM NhanVien ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        conn.Open();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                System.Diagnostics.Debug.WriteLine("Lỗi không xác định tải dữ liệu");
+            }
+            return dt;
+        }
+        public DataTable GetTK(string MaNV, DateTime startDate, DateTime endDate)
+        {
+            DataTable dt = new DataTable();
+            string query = @"
+        SELECT NV.MaNhanVien,
+               NV.HoTen,
+               PB.NgayTao,
+               PB.TrangThai,
+               COUNT(ChiTietPhieu.SoLuong) AS [SoLuongPhieu],
+               SUM(ChiTietPhieu.DonGia * ChiTietPhieu.SoLuong) AS [TongTien]
+        FROM NhanVien NV
+        INNER JOIN PhieuBanHang PB ON PB.MaNhanVien = NV.MaNhanVien
+        INNER JOIN ChiTietPhieu ON ChiTietPhieu.MaPhieu = PB.MaPhieu
+        WHERE (@MaNV IS NULL OR NV.MaNhanVien = @MaNV)
+              AND PB.NgayTao BETWEEN @TuNgay AND @DenNgay
+        GROUP BY NV.MaNhanVien, NV.HoTen, PB.TrangThai, PB.NgayTao";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaNV", string.IsNullOrEmpty(MaNV) ? (object)DBNull.Value : MaNV);
+                    cmd.Parameters.AddWithValue("@TuNgay", startDate);
+                    cmd.Parameters.AddWithValue("@DenNgay", endDate);
+
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            catch (Exception)
+            {
+                // Ghi log lỗi nếu cần
+                System.Diagnostics.Debug.WriteLine("Lỗi không xác định tải dữ liệu");
+            }
+            return dt;
+        }
+
+        public DataTable LoadMaNV()
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT MaNhanVien, HoTen FROM NhanVien";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading data: {ex.Message}");
+            }
+            return dt;
+        }
+
+    }
+    public class SanPhamDAL
+    {
+        private static string connectionString = "Data Source=SD20302\\ADMINCUTE;Initial Catalog=PolyCafe;Integrated Security=True;";
+        public DataTable GetAllSanPham()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM SanPham", conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+        public bool AddSanPham(SanPhamDTO sanPham)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO SanPham (MaSanPham, TenSanPham, MaLoai, DonGia, TrangThai, HinhAnh) VALUES (@MaSanPham, @TenSanPham, @MaLoai, @DonGia, @TrangThai, @HinhAnh)", conn);
+                cmd.Parameters.AddWithValue("@MaSanPham", sanPham.MaSanPham);
+                cmd.Parameters.AddWithValue("@TenSanPham", sanPham.TenSanPham);
+                cmd.Parameters.AddWithValue("@MaLoai", sanPham.MaLoai);
+                cmd.Parameters.AddWithValue("@DonGia", sanPham.DonGia);
+                cmd.Parameters.AddWithValue("@TrangThai", sanPham.TrangThai);
+                cmd.Parameters.AddWithValue("@HinhAnh", sanPham.HinhAnh);
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        public bool UpdateSanPham(SanPhamDTO sanPham)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE SanPham SET TenSanPham = @TenSanPham, MaLoai = @MaLoai, DonGia = @DonGia, TrangThai = @TrangThai, HinhAnh = @HinhAnh WHERE MaSanPham = @MaSanPham", conn);
+                cmd.Parameters.AddWithValue("@MaSanPham", sanPham.MaSanPham);
+                cmd.Parameters.AddWithValue("@TenSanPham", sanPham.TenSanPham);
+                cmd.Parameters.AddWithValue("@MaLoai", sanPham.MaLoai);
+                cmd.Parameters.AddWithValue("@DonGia", sanPham.DonGia);
+                cmd.Parameters.AddWithValue("@TrangThai", sanPham.TrangThai);
+                cmd.Parameters.AddWithValue("@HinhAnh", sanPham.HinhAnh);
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        public bool DeleteSanPham(string maSanPham)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM SanPham WHERE MaSanPham = @MaSanPham", conn);
+                cmd.Parameters.AddWithValue("@MaSanPham", maSanPham);
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        public DataTable SearchSanPham(string searchTerm)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                // --- CORRECTED: Select all columns for proper DataGridView display ---
+                // Changed from SELECT MaSanPham to SELECT *
+                // Changed search column from MaSanPham to TenSanPham (more common for text search)
+                SqlCommand cmd = new SqlCommand("SELECT * FROM SanPham WHERE TenSanPham LIKE @SearchTerm OR MaSanPham LIKE @SearchTerm", conn);
+                cmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+        public DataTable GetLoaiSanPham()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM LoaiSanPham", conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+    }
 
 }

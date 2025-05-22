@@ -92,4 +92,49 @@ namespace Polycafe_BUS
             return dal.LoadMaLoai();
         }
     }
+    public class ThongkeNVBUS
+    {
+        private ThongkeNVDAL dal = new ThongkeNVDAL();
+        public DataTable getEmp()
+        {
+            return dal.GetNV();
+        }
+        public DataTable getTK(string MaNV, DateTime startDate, DateTime endDate)
+        {
+            return dal.GetTK(MaNV, startDate, endDate);
+        }
+        public DataTable LoadmaNV()
+        {
+            return dal.LoadMaNV();
+        }
+
+    }
+    public class SanPhamBUS
+    {
+        private SanPhamDAL dal = new SanPhamDAL();
+        public DataTable GetAllSanPham()
+        {
+            return dal.GetAllSanPham();
+        }
+        public bool AddSanPham(SanPhamDTO sanPham)
+        {
+            return dal.AddSanPham(sanPham);
+        }
+        public bool UpdateSanPham(SanPhamDTO sanPham)
+        {
+            return dal.UpdateSanPham(sanPham);
+        }
+        public bool DeleteSanPham(string maSanPham)
+        {
+            return dal.DeleteSanPham(maSanPham);
+        }
+        public DataTable SearchSanPham(string searchTerm)
+        {
+            return dal.SearchSanPham(searchTerm);
+        }
+        public DataTable GetLoaiSanPham()
+        {
+            return dal.GetLoaiSanPham();
+        }
+    }
 }

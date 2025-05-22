@@ -26,4 +26,30 @@ namespace Polycafe_DTO
         public string TenLoai { get; set; }
         public string GhiChu { get; set; }
     }
+    
+
+    public class ThongKeNhanVien_DTO
+    {
+        public string MaNV { get; set; }
+        public string TenNV { get; set; }
+        public decimal TongTien { get; set; }
+        public int SoLuongPhieu { get; set; }
+        public DateTime NgayLapPhieu { get; set; }
+        public string TrangThai { get; set; }
+    }
+
+    public class NhanVien_DTO
+    {
+        public string MaNV { get; set; }
+        public string TenNV { get; set; }
+    }
+    public class SanPhamDTO
+    {
+        public string MaSanPham { get; set; }
+        public string TenSanPham { get; set; }
+        public string MaLoai { get; set; }
+        public decimal DonGia { get; set; }
+        public string TrangThai { get; set; }
+        public string HinhAnh { get; set; }
+    }
 }
