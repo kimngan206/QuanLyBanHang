@@ -43,5 +43,10 @@ namespace Polycafe_GUI
                 e.Cancel = true;
             }
         }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

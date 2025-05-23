@@ -104,5 +104,20 @@ namespace Polycafe_GUI
         {
 
         }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            // Hiển thị MessageBox xác nhận
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Kiểm tra kết quả từ MessageBox
+            if (result == DialogResult.Yes)
+            {
+                // Nếu người dùng chọn Yes, ẩn Form hiện tại và hiển thị Form Đăng nhập
+                this.Hide(); // Ẩn MainForm
+                Login login = new Login();
+                login.Show(); // Hiển thị LoginForm
+            }
+        }
     }
 }

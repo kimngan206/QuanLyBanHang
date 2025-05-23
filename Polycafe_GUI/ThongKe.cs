@@ -10,10 +10,8 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ThongKeNV_BUS;
-using ThongKeNV_DAL;
-using ThongKeNV_DTO;
-
+using Polycafe_BUS;
+using Polycafe_DTO;
 namespace Polycafe_GUI
 {
     public partial class ThongKe : UserControl
@@ -22,6 +20,8 @@ namespace Polycafe_GUI
         public ThongKe()
         {
             InitializeComponent();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private void ClearFields()
         {
@@ -218,47 +218,29 @@ namespace Polycafe_GUI
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-namespace ThongKeNV_DTO
-{
-    public class qlLSP
-    {
-        public string MaLoai { get; set; }
-        public string TenLoai { get; set; }
-        public string GhiChu { get; set; }
-    }
 
-    public class ThongKeNhanVien_DTO
-    {
-        public string MaNV { get; set; }
-        public string TenNV { get; set; }
-        public decimal TongTien { get; set; }
-        public int SoLuongPhieu { get; set; }
-        public DateTime NgayLapPhieu { get; set; }
-        public string TrangThai { get; set; }
-    }
-
-    public class NhanVien_DTO
-    {
-        public string MaNV { get; set; }
-        public string TenNV { get; set; }
-    }
-    public class SanPham_DTO
-    {
-        public string MaSP { get; set; }
-        public string TenSP { get; set; }
-    }
-
-    public class ThongKeSanPham_DTO
-    {
-        public string MaSP { get; set; }
-        public string TenSP { get; set; }
-        public int SoLuongBan { get; set; }
-        public decimal TongTien { get; set; }
-        public DateTime NgayLapPhieu { get; set; }
-    }
-}
 
 namespace ThongKeNV_DAL
 {
@@ -431,39 +413,4 @@ namespace ThongKeNV_DAL
 
 
 
-}
-namespace ThongKeNV_BUS
-{
-    public class ThongkeNVBUS
-    {
-        private ThongkeNVDAL dal = new ThongkeNVDAL();
-        public DataTable getEmp()
-        {
-            return dal.GetNV();
-        }
-        public DataTable getTK(string MaNV, DateTime startDate, DateTime endDate)
-        {
-            return dal.GetTK(MaNV, startDate, endDate);
-        }
-
-        public List<string> LoadmaNV()
-        {
-            return dal.LoadMaNV();
-        }
-
-
-
-
-        public DataTable getTKSP(string MaSP, DateTime startDate, DateTime endDate)
-        {
-            return dal.GetTKSP(MaSP, startDate, endDate);
-        }
-
-        public List<SanPham_DTO> LoadmaSP()
-        {
-            return dal.LoadMaSP();
-        }
-
-
-    }
 }

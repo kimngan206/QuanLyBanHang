@@ -23,12 +23,14 @@ namespace Polycafe_GUI
         // Make sure this path exists and your application has read/write permissions to it.
         // If you want to store only the filename in the database, you MUST ensure the image files
         // are physically present in this directory.
-        private const string BaseImagePath = "C:\\Users\\ADMIN\\OneDrive\\Hình ảnh\\Dự Án";
+        private const string BaseImagePath = "C:\\Users\\ADMIN\\OneDrive\\Tài liệu\\Dự Án Mẫu_SOF2052\\ASM_Project\\QuanLyBanHang\\Dự Án";
 
         public QuanLySanPham()
         {
             InitializeComponent();
             LoadData(); // Initial load of product data into the DataGridView
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         public void LoadData()
@@ -294,6 +296,16 @@ namespace Polycafe_GUI
             pictureBox1.Image = null; // Clear the displayed image
             pictureBox1.Tag = null; // Clear the stored path
             comBofound.Text = string.Empty; // Clear the search input
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDonGia_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Polycafe_GUI
         public QLLoaiSanPham()
         {
             InitializeComponent();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void LoadData()

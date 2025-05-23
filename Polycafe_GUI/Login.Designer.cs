@@ -43,9 +43,9 @@ namespace Polycafe_GUI
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chkremember = new System.Windows.Forms.CheckBox();
             this.LinkForget = new System.Windows.Forms.LinkLabel();
+            this.chkremember = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +122,7 @@ namespace Polycafe_GUI
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(195, 12);
+            this.label3.Location = new System.Drawing.Point(222, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 48);
             this.label3.TabIndex = 7;
@@ -152,24 +152,23 @@ namespace Polycafe_GUI
             this.panel1.Controls.Add(this.pass);
             this.panel1.Controls.Add(this.user);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(307, 112);
+            this.panel1.Location = new System.Drawing.Point(362, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(561, 564);
+            this.panel1.Size = new System.Drawing.Size(558, 576);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
             // 
-            // pictureBox1
+            // LinkForget
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(28, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(246, 116);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.LinkForget.AutoSize = true;
+            this.LinkForget.Location = new System.Drawing.Point(342, 343);
+            this.LinkForget.Name = "LinkForget";
+            this.LinkForget.Size = new System.Drawing.Size(120, 20);
+            this.LinkForget.TabIndex = 10;
+            this.LinkForget.TabStop = true;
+            this.LinkForget.Text = "Quên Mật Khẩu";
+            this.LinkForget.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkForget_LinkClicked);
             // 
             // chkremember
             // 
@@ -183,15 +182,17 @@ namespace Polycafe_GUI
             this.chkremember.UseVisualStyleBackColor = false;
             this.chkremember.CheckedChanged += new System.EventHandler(this.chkremember_CheckedChanged);
             // 
-            // LinkForget
+            // pictureBox1
             // 
-            this.LinkForget.AutoSize = true;
-            this.LinkForget.Location = new System.Drawing.Point(342, 343);
-            this.LinkForget.Name = "LinkForget";
-            this.LinkForget.Size = new System.Drawing.Size(120, 20);
-            this.LinkForget.TabIndex = 10;
-            this.LinkForget.TabStop = true;
-            this.LinkForget.Text = "Quên Mật Khẩu";
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(28, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(246, 116);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Login
             // 
@@ -203,6 +204,7 @@ namespace Polycafe_GUI
             this.ClientSize = new System.Drawing.Size(1041, 713);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);

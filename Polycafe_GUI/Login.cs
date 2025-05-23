@@ -226,5 +226,13 @@ namespace Polycafe_GUI
                 Properties.Settings.Default.Save();
             }
         }
+
+        private void LinkForget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string userEmail = user.Text; // Lấy email từ textbox hoặc biến lưu trữ trong LoginForm
+            ForgetPassword forgetPassword = new ForgetPassword(userEmail);
+            forgetPassword.Show(); // Hiển thị ForgetPassword
+            this.Hide(); // Ẩn LoginForm
+        }
     }
 }

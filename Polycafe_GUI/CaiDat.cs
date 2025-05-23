@@ -17,13 +17,25 @@ namespace Polycafe_GUI
     {
         private string connectionString = "Data Source=SD20302\\ADMINCUTE;Initial Catalog=PolyCafe;Integrated Security=True;";
         private NhanVienBLL nhanVienBLL;
+        private HoSo_BUS bus = new HoSo_BUS(); 
+        private string userEmail;
 
         public CaiDat()
         {
             InitializeComponent();
             nhanVienBLL = new NhanVienBLL(connectionString);
+            LoadUser();
         }
-
+        private void LoadUser()
+        {
+            DataTable userInfo = bus.Getuser(userEmail);
+            if (userInfo.Rows.Count > 0)
+            {
+                textBox5.Text = userInfo.Rows[0]["HoTen"].ToString();
+                textBox6.Text = userInfo.Rows[0]["Email"].ToString();
+                textBox7.Text = Convert.ToBoolean(userInfo.Rows[0]["VaiTro"]) ? "Quản Lý" : "Nhân viên Bán Hàng ";
+            }
+        }
         private void chkShowOldPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtOldPassword.PasswordChar = chkShowOldPassword.Checked ? '\0' : '*';
@@ -103,6 +115,16 @@ namespace Polycafe_GUI
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
